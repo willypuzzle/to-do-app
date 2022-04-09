@@ -3,5 +3,11 @@
 
 export default {
   failed: 'Action failed',
-  success: 'Action was successful'
+  success: 'Action was successful',
+  index: {
+    label: 'To Do App'
+  },
+  toolbar: {
+    label: 'To Do App'
+  }
 }

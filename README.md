@@ -2,6 +2,13 @@
 
 This is a simple to-do-app with api mockup
 
+## cp .env file
+```bash
+cp .env.example .env
+```
+
+edit the .env file if you want api calls to be called to a certain end-point instead of mocking up them. For example set API_BASE_URL to 'https://api.example.com'
+
 ## Install the dependencies
 ```bash
 yarn
@@ -11,7 +18,7 @@ npm install
 
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 ```bash
-quasar dev
+npx quasar dev
 ```
 
 
@@ -34,7 +41,7 @@ npm run format
 
 ### Build the app for production
 ```bash
-quasar build
+npx quasar build
 ```
 
 ### Customize the configuration

@@ -28,14 +28,16 @@
         <q-item-label
           header
         >
-          Essential Links
+          {{ $t('menu.label')}}
         </q-item-label>
 
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
+        <template v-if="essentialLinks">
+          <EssentialLink
+            v-for="link in essentialLinks"
+            :key="link.title"
+            v-bind="link"
+          />
+        </template>
       </q-list>
     </q-drawer>
 
@@ -46,51 +48,27 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, getCurrentInstance } from 'vue'
 import EssentialLink from 'components/EssentialLink.vue'
+import _ from 'lodash'
+import eventBus, {EVENT_LANGUAGE_CHANGE} from "src/libraries/event-bus";
 
 const linksList = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: '',
+    title_key: 'layout.links.home.title',
+    caption: '',
+    caption_key: 'layout.links.home.caption',
+    icon: 'home',
+    to: 'home'
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+    title: '',
+    title_key: 'layout.links.settings.title',
+    caption: '',
+    caption_key: 'layout.links.settings.caption',
+    icon: 'settings',
+    to: 'settings'
   }
 ]
 
@@ -103,9 +81,24 @@ export default defineComponent({
 
   setup () {
     const leftDrawerOpen = ref(false)
+    const vm = getCurrentInstance();
+    const essentialLinks = ref(false);
+
+    const languageSet = () => {
+      essentialLinks.value = _.map(linksList, (l) => {
+        const link = _.clone(l)
+        link.title = vm.ctx.$i18n.t(link.title_key)
+        link.caption = vm.ctx.$i18n.t(link.caption_key)
+        return link
+      })
+    }
+
+    setTimeout(languageSet)
+
+    eventBus.on(EVENT_LANGUAGE_CHANGE, languageSet)
 
     return {
-      essentialLinks: linksList,
+      essentialLinks,
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value

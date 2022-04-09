@@ -2,37 +2,37 @@
 // so you can safely delete all default props below
 
 export default {
-  failed: 'Action failed',
-  success: 'Action was successful',
+  failed: 'Azione fallita',
+  success: 'Azione eseguita con successo',
   index: {
-    label: 'To Do App'
+    label: 'Applicazione To Do'
   },
   settings:{
     languages: {
       select: {
-        label: 'Language',
+        label: 'Lingua',
         options: {
-          italian: 'Italian',
-          english: 'English'
+          italian: 'Italiano',
+          english: 'Inglese'
         }
       }
     }
   },
   toolbar: {
-    label: 'To Do App'
+    label: 'Applicazione To Do'
   },
   menu: {
-    label: 'Menu'
+    label: 'Menù'
   },
   layout: {
     links: {
       home: {
         title: 'Home',
-        caption: 'Home Page'
+        caption: 'Pagina Home'
       },
       settings: {
-        title: 'Settings',
-        caption: 'Settings Page'
+        title: 'Configurazione',
+        caption: 'Pagina di configurazione'
       }
     }
   }

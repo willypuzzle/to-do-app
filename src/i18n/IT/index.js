@@ -1,11 +1,13 @@
-// This is just an example,
-// so you can safely delete all default props below
-
 export default {
-  failed: 'Azione fallita',
-  success: 'Azione eseguita con successo',
+  try_again: 'Prova di nuovo',
+  failed: 'Azione Fallita',
+  success: 'L\'azione è andata a buon fine',
+  when: 'Quando',
+  what: 'Cosa',
+  where: 'Dove',
+  add: 'Aggiungi',
   index: {
-    label: 'Applicazione To Do'
+    label: 'Applicazione per promemoria'
   },
   settings:{
     languages: {
@@ -19,7 +21,7 @@ export default {
     }
   },
   toolbar: {
-    label: 'Applicazione To Do'
+    label: 'Applicazione per promemoria'
   },
   menu: {
     label: 'Menù'
@@ -32,14 +34,12 @@ export default {
       },
       settings: {
         title: 'Configurazione',
-        caption: 'Pagina di configurazione'
+        caption: 'Pagina di Configurazione'
+      },
+      todos: {
+        title: 'Promemoria',
+        caption: 'Pagina dei promemoria'
       }
     }
-  },
-  date: JSON.stringify({
-    days: ['Domenica', 'Lunedì','Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'],
-    daysShort: ['Dom', 'Lun','Mar', 'Mer', 'Gio', 'Ven', 'Sab'],
-    months: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
-    monthsShort: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
-  })
+  }
 }

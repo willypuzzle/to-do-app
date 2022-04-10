@@ -75,7 +75,7 @@ const linksList = [
     title_key: 'layout.links.todos.title',
     caption: '',
     caption_key: 'layout.links.todos.caption',
-    icon: 'todo',
+    icon: 'event',
     to: 'todos'
   }
 ]

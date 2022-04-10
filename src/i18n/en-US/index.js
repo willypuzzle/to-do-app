@@ -1,6 +1,3 @@
-// This is just an example,
-// so you can safely delete all default props below
-
 export default {
   try_again: 'Try Again',
   failed: 'Action failed',
@@ -8,6 +5,7 @@ export default {
   when: 'When',
   what: 'What',
   where: 'where',
+  add: 'Add',
   index: {
     label: 'To Do App'
   },
@@ -43,6 +41,5 @@ export default {
         caption: 'To Dos Page'
       }
     }
-  },
-  date: null
+  }
 }

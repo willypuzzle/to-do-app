@@ -6,6 +6,8 @@ export default {
   what: 'What',
   where: 'where',
   add: 'Add',
+  delete: 'delete',
+  id: 'Code',
   index: {
     label: 'To Do App'
   },

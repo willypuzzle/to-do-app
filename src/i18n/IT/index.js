@@ -6,6 +6,8 @@ export default {
   what: 'Cosa',
   where: 'Dove',
   add: 'Aggiungi',
+  delete: 'Cancella',
+  id: 'Codice',
   index: {
     label: 'Applicazione per promemoria'
   },

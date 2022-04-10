@@ -69,6 +69,14 @@ const linksList = [
     caption_key: 'layout.links.settings.caption',
     icon: 'settings',
     to: 'settings'
+  },
+  {
+    title: '',
+    title_key: 'layout.links.todos.title',
+    caption: '',
+    caption_key: 'layout.links.todos.caption',
+    icon: 'todo',
+    to: 'todos'
   }
 ]
 

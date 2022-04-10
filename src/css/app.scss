@@ -1,1 +1,24 @@
 // app global css in SCSS form
+.flex-al-start {
+  align-items: flex-start;
+}
+
+.flex-column{
+  flex-direction: column;
+}
+
+.flex-start, .justify-start {
+  justify-content: flex-start;
+}
+
+.flex-align-item-self-end {
+  align-items: flex-end;
+}
+
+.flex-justify-content-space-between{
+  justify-content: space-between;
+}
+
+.full-width{
+  width: 100%;
+}

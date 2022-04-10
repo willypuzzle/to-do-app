@@ -2,6 +2,7 @@
 // so you can safely delete all default props below
 
 export default {
+  try_again: 'Try Again',
   failed: 'Action failed',
   success: 'Action was successful',
   index: {
@@ -33,7 +34,12 @@ export default {
       settings: {
         title: 'Settings',
         caption: 'Settings Page'
+      },
+      todos: {
+        title: 'To Dos',
+        caption: 'To Dos Page'
       }
     }
-  }
+  },
+  date: null
 }

@@ -5,6 +5,9 @@ export default {
   try_again: 'Try Again',
   failed: 'Action failed',
   success: 'Action was successful',
+  when: 'When',
+  what: 'What',
+  where: 'where',
   index: {
     label: 'To Do App'
   },

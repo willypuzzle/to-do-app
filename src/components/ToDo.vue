@@ -12,7 +12,7 @@
     <q-chip dense size="md" icon="place">
       {{ $t('where') }}: {{ form.where }}
     </q-chip>
-    <q-btn color="red" icon-right="send" :label="$t('delete')" @click="deleteEntry"/>
+    <q-btn color="red" icon-right="send" :label="$t('delete')" @click="deleteEntry" :loading="loading"/>
   </div>
 </template>
 
@@ -25,6 +25,10 @@ export default defineComponent({
     form: {
       type: Object,
       required: true
+    },
+    loading: {
+      type:Boolean,
+      required: true
     }
   },
   data () {
@@ -33,7 +37,7 @@ export default defineComponent({
   },
   methods: {
     deleteEntry(){
-      //TODO
+      this.$emit('delete', {id: this.form.id})
     }
   }
 })

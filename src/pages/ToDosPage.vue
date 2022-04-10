@@ -4,7 +4,7 @@
     <template v-if="!error">
       <Form ref="form" :loading="loading" :disable="disable" @add="add"/>
       <div class="flex flex-column wrap full-width justify-start">
-        <ToDo v-for="todo in todos" :form="todo" @delete="deleteTodo" :key="todo.id"/>
+        <ToDo v-for="todo in todos" :form="todo" @delete="deleteTodo" :loading="loading" :key="todo.id"/>
       </div>
     </template>
   </q-page>
@@ -15,6 +15,7 @@ import { defineComponent } from 'vue'
 import Error from "components/Error";
 import Form from "components/Form";
 import ToDo from "components/ToDo";
+import _ from 'lodash'
 
 export default defineComponent({
   name: 'ToDosPage',
@@ -38,35 +39,46 @@ export default defineComponent({
   },
   methods: {
     async getTodos(){
-      this.last_action = this.getTodos
-      this.last_parameters = []
-      try {
-        this.loading = true
+      const callback = async () => {
         const data = await this.$api.get('/todos')
         this.todos = data.data
-      }catch (e){
-        this.error = true
       }
-      this.loading = false
+
+      await this.action(callback)
     },
     retry(){
       this.error = false
       this.last_action(...this.last_parameters)
     },
     async add({when, where, what}){
-      this.last_action = this.add
-      this.last_parameters = [{when, where, what}]
+      const callback = async () => {
+        const data = await this.$api.post('/todos',{when, where, what})
+        this.$refs.form.reset()
+        this.todos.push(data.data)
+      }
+      await this.action(callback)
+    },
+    async deleteTodo({id}){
+      const callback = async () => {
+        await this.$api.delete(`/todos/${id}`)
+        this.todos = _.filter(this.todos, todo => todo.id !== id)
+      }
+
+      await this.action(callback)
+    },
+    /**
+     * This method manages errors handling and loading flag
+     * */
+    async action(callback){
+      this.last_action = this.action
+      this.last_parameters = [callback]
       try{
         this.loading = true
-        const data = await this.$api.post('/todos',{when, where, what})
-        this.todos.push(data.data)
+        await callback()
       }catch (e) {
         this.error = true
       }
       this.loading = false
-    },
-    async deleteTodo({id}){
-      //TODO
     }
   }
 })
